@@ -1,0 +1,35 @@
+---
+import Base from '@layouts/Base.astro';
+import type { BlogPostFrontmatter } from '@types';
+import { formatDate } from '@utils';
+import type { MarkdownInstance } from 'astro';
+
+let posts = await Astro.glob<BlogPostFrontmatter>('./*.md');
+
+type Post = MarkdownInstance<BlogPostFrontmatter>;
+
+//sorting blogpost by newest first  
+posts = posts.sort((a: Post, b: Post):number => {
+  if (a.frontmatter.date > b.frontmatter.date) {
+    return -1;
+  }
+
+  if (b.frontmatter.date > a.frontmatter.date) {
+    return 1;
+  }
+  return 0;
+})
+---
+
+<Base title="Blog Posts">
+  <h1 class="mb-5 text-5xl">Blog Posts</h1>
+
+  <div>
+      {posts.map((post) => (
+        <div class="py-4 border-b first:border-t">
+          <a class="text-orange-700 hover:underline" href={post.url}>{post.frontmatter.title}</a>
+          <p>{formatDate(post.frontmatter.date)}</p>
+        </div>
+      ))}
+  </div>
+</Base>
