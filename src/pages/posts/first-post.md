@@ -1,6 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: First Blog Post
+tags: ["Ethereum", "Blockchain"]
 date: 2022-11-23
 ---
 

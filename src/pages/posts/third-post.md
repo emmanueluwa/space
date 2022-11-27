@@ -2,6 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: Third Blog Post
 date: 2022-11-23
+draft: true
 ---
 
 Solidity

@@ -1,6 +1,8 @@
 interface BlogPostFrontmatter {
   title: string;
-  date: string
+  date: string;
+  tags?: string[];
+  draft?: boolean;
 }
 
 export type {

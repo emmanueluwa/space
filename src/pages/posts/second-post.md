@@ -1,6 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: Second Blog Post
+tags: ["Ethereum", "Blockchain", "NFT"]
 date: 2022-11-23
 ---
 
