@@ -22,6 +22,7 @@ export async function getStaticPaths() {
 
 import Base from '@layouts/Base.astro';
 import PostsList from '@components/PostsList.astro';
+import { capitaliseSentence } from '@utils';
 
 let  posts  = await Astro.glob<BlogPostFrontmatter>('../*.md');
 
@@ -39,9 +40,9 @@ posts = posts.filter(post => {
     return showPost;
 })
 ---
-<Base title={`${tag} Related Posts`}>
+<Base title={`${capitaliseSentence(tag as string)} Related Posts`}>
     <h1 class="mb-8 text-5xl">Blog Posts</h1>
-    <p>All <strong>{tag}</strong> related posts.</p>
+    <p>All <strong>{capitaliseSentence(tag as string)}</strong> related posts.</p>
 
     <PostsList posts={posts}/>
 </Base>
